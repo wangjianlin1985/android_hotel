@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chengxusheji.domain">
+
+	<class name="RoomInfo" table="RoomInfo">
+
+          <!-- 主键房间编号 -->
+          <id name="roomNumber" type="string" length="20">
+            <generator class="assigned"/>
+          </id>
+
+          <!-- 多对一属性: 房间类型 -->
+          <many-to-one name="roomTypeObj"
+            column="roomTypeObj"
+            class="RoomType"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 简单浮点型属性: 价格(元/天) -->
+          <property
+            name="roomPrice"
+            column="roomPrice"
+            type="float"
+          />
+
+          <!-- 简单字符串属性: 所处位置 -->
+          <property
+            name="position"
+            column="position"
+            type="string"
+            length="30"
+          />
+
+          <!-- 简单字符串属性: 房间介绍 -->
+          <property
+            name="introduction"
+            column="introduction"
+            type="string"
+            length="200"
+          />
+
+          <!-- 简单图片属性: 房间照片 -->
+          <property
+            name="roomPhoto"
+            column="roomPhoto"
+            type="string"
+            length="50"
+          />
+
+
+		 
+		
+	</class>
+	
+</hibernate-mapping>
+ 

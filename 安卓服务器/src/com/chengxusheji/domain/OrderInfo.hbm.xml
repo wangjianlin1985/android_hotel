@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chengxusheji.domain">
+
+	<class name="OrderInfo" table="OrderInfo">
+
+          <!-- 主键订单编号 -->
+          <id name="orderNumber" type="string" length="20">
+            <generator class="assigned"/>
+          </id>
+
+          <!-- 多对一属性: 预订的房间 -->
+          <many-to-one name="roomObj"
+            column="roomObj"
+            class="RoomInfo"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 多对一属性: 预订的用户 -->
+          <many-to-one name="userObj"
+            column="userObj"
+            class="UserInfo"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 简单字符串属性: 预订开始时间 -->
+          <property
+            name="startTime"
+            column="startTime"
+            type="string"
+            length="20"
+          />
+
+          <!-- 简单字符串属性: 离开时间 -->
+          <property
+            name="endTime"
+            column="endTime"
+            type="string"
+            length="20"
+          />
+
+          <!-- 简单浮点型属性: 订单金额 -->
+          <property
+            name="orderMoney"
+            column="orderMoney"
+            type="float"
+          />
+
+          <!-- 简单字符串属性: 附加信息 -->
+          <property
+            name="orderMemo"
+            column="orderMemo"
+            type="string"
+            length="20"
+          />
+
+          <!-- 简单字符串属性: 下单时间 -->
+          <property
+            name="orderAddTime"
+            column="orderAddTime"
+            type="string"
+            length="30"
+          />
+
+
+		 
+		
+	</class>
+	
+</hibernate-mapping>
+ 
